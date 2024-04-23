@@ -1,10 +1,6 @@
-global.dbready = false;
-
 require('dotenv').config();
-const chalk = require('chalk');
 require('./helpers');
 const fs = require('fs');
-const mongoose = require('mongoose');
 const { Client, GatewayIntentBits, Partials, Events } = require('discord.js');
 const path = require('node:path');
 const client = new Client({
@@ -15,19 +11,6 @@ const client = new Client({
 	partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember],
 });
 
-mongoose.connect(process.env.MONGO_URI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-})
-	.then(() => {
-		global.dbready = true;
-		console.log(chalk.greenBright('CONNECTED'), 'Connected to database!');
-	})
-	.catch((err) => {
-		console.log(err);
-	});
-
-
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => {
 	return file.endsWith('.js') && !file.startsWith('--');
@@ -37,7 +20,6 @@ const eventFiles = fs.readdirSync(eventsPath).filter(file => {
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	let events = require(filePath);
-	// check if events module exports a single object and convert it to array.
 	if (!Array.isArray(events)) {
 		events = [events];
 	}
@@ -55,8 +37,4 @@ client.login(process.env.TOKEN);
 client.on('rateLimit', function (rateLimitData) {
 	console.log('the rate limit has been hit!  Slow\'r down a tad.');
 	console.log({ rateLimitData });
-});
-
-client.on(Events.ClientReady, function (client) {
-	global.currentClient = client;
 });

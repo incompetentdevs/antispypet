@@ -1,7 +1,6 @@
 const { REST } = require('@discordjs/rest');
 const { Events, Routes, Collection } = require('discord.js');
 const chalk = require('chalk');
-const { guildId } = require('../config.json');
 const path = require('path');
 const fs = require('fs').promises;
 
@@ -19,15 +18,6 @@ async function refreshApplicationCommands(client, commands) {
 
         console.log(chalk.greenBright('REFRESHED'), 'Successfully refreshed global application commands.');
     } catch (error) {
-        handleRefreshError(error);
-    }
-}
-
-function handleRefreshError(error) {
-    if (error.code === 50001) {
-        console.log(chalk.redBright('CRITICAL ERROR'), 'I can\'t access the guild in config.');
-        process.exit(0); // this will be replaced once we can do global commands
-    } else {
         console.error(error);
     }
 }
