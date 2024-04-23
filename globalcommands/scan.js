@@ -10,8 +10,6 @@
         async execute(interaction, client) {
             if (!interaction.guild) return interaction.reply({ content: 'You can only use this in a guild.' });
 
-            interaction.guild.id = '565105920414318602';
-
             const embed = new EmbedBuilder()
                 .setTitle(`Scanning ${await getEmoji('icon_loading')}`)
                 .setColor(colors.blend)
