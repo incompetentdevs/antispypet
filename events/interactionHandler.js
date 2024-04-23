@@ -6,10 +6,6 @@ module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction, client) {
         if (interaction.isMessageContextMenuCommand() || interaction.isUserContextMenuCommand() || interaction.isChatInputCommand()) {
-            if (!global.dbready) {
-                return interaction.reply({ content: 'im still startin\' up!', ephemeral: true });
-            }
-    
             const command = client.commands.get(interaction.commandName);
     
             if (command) {
