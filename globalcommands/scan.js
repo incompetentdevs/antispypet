@@ -19,7 +19,7 @@
 
             axios.get(`https://kickthespy.pet/getBot?id=${interaction.guild.id}`)
                 .then(async response => {
-                    embed.setTitle(`Scan complete! ${await getEmoji('icon_shield_exclamation').then(emoji => emoji)}`)
+                    embed.setTitle(`Scan complete! ${await getEmoji('icon_shield_exclamation3').then(emoji => emoji)}`)
                     embed.setFooter({ text: 'AntiSpyPet will periodically scan and let you know if it finds malicious accounts.' })
 
                     if (response.data && response.data.id) {
@@ -45,7 +45,7 @@
                 })
                 .catch(async error => {
                     if (error.response.data.error === 'Bot not found') {
-                        embed.setTitle(`Scan complete! ${await getEmoji('icon_shield_check2').then(emoji => emoji)}`)
+                        embed.setTitle(`Scan complete! ${await getEmoji('icon_shield_check3').then(emoji => emoji)}`)
                         embed.setDescription('You\'re all clear no bots found here!')
 
                         const confirm = new ButtonBuilder()
