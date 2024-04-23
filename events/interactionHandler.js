@@ -10,7 +10,7 @@ module.exports = {
     
             if (command) {
                 try {
-                    console.error(chalk.yellowBright('INTERACTION'), `Someone used /${interaction.commandName}`);
+                    console.log(chalk.yellowBright('INTERACTION'), `Someone used /${interaction.commandName}`);
                     await command.execute(interaction, client);
                 } catch (error) {
                     console.error(chalk.redBright('ERROR'), error);
