@@ -1,6 +1,4 @@
-// add a refresh every 30 min [ADD]
-// usage: getEmoji('name');
-// example 2: ${await getEmoji('Twitter')}
+// this code is from an old project of mine, not changed at all for antispypet
 
 const { emojiGuilds } = require('../config.json');
 
