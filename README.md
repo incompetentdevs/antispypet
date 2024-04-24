@@ -4,3 +4,5 @@ node 16 *
 
 create .env based on .env.example
 npm run dev
+
+![image](https://github.com/incompetentdevs/antispypet/assets/158991746/dc3c0768-e035-45ed-8ecf-f9037e8d95db)
